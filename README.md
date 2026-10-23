@@ -2,6 +2,8 @@
 
 A motion designed showcase of eight public Grok Bot templates by Sai Krishna Uppaluri, founder of [ViSNET AI](https://visnetai.co), plus the [Plan to 3D plugin](https://github.com/saikrishnauppaluri/plan-to-3d).
 
+Live: https://saikrishna-bots.vercel.app
+
 Bots: Plan to 3D, Idea Crucible, Product Idea Stress Test, Sell Bot, X Growth, Talent Discovery, Talent Reach, Buy or Skip.
 
 ## Stack

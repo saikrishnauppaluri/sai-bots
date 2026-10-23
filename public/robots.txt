@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://saikrishna-bots.vercel.app/sitemap.xml
