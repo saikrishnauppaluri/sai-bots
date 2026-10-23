@@ -1,0 +1,238 @@
+export const CATEGORIES = [
+  { id: 'all', label: 'All bots' },
+  { id: 'build', label: 'Build & 3D' },
+  { id: 'ideas', label: 'Product & ideas' },
+  { id: 'growth', label: 'Sales & growth' },
+  { id: 'hiring', label: 'Hiring' },
+  { id: 'shopping', label: 'Shopping' },
+];
+
+export const BOTS = [
+  {
+    id: 'plan-to-3d',
+    name: 'Plan to 3D',
+    cat: 'build',
+    color: '#FF263C',
+    shape: 'hex',
+    url: 'https://x.ai/bot/b8uZ_wfko_YxI-j8YPKAe',
+    tagline: 'Upload a 2D drawing. Get a 3D model back.',
+    summary:
+      'Turns 2D drawings (floor plans, site plans, part drawings, profiles) into 3D models you can open, view, and use, with a preview image and approximate quantities.',
+    what:
+      'Plan to 3D reads a drawing, works out what kind it is (a floor plan, a site plan, a simple part profile or logo, or a mechanical part drawing), builds the 3D model, and sends back the files, a preview image, and a quantity summary.',
+    who: 'Architects, builders, and makers who have a 2D drawing and need something they can open in 3D.',
+    steps: [
+      'Upload a drawing as DXF (best), PDF with vector lines, SVG, or a PNG or JPG plan, scan, or photo.',
+      'For scans and photos it asks for one known dimension to set the scale. DWG users export DXF first.',
+      'Floor and site plans: wall lines are extruded to 3 m unless you give another height, with door gaps kept as openings.',
+      'Profiles and logos are extruded to the thickness you give. Mechanical drawings: it lists the dimensions and how the views line up, you confirm in one message, then it builds the solid.',
+      'It checks every model before sending: the mesh must be watertight and the dimensions must match the drawing.',
+    ],
+    get: [
+      'GLB, STL, OBJ, and STEP files, plus a PNG preview',
+      'On request: a single HTML 3D viewer, IFC for BIM tools, or FBX',
+      'Total wall length, wall footprint area, and wall volume',
+      'The area of each enclosed room',
+      'A rough material estimate and a scale check, all labelled approximate',
+    ],
+    rules: [
+      'Never invents dimensions, scales, heights, or quantities, and states every assumption',
+      'Estimates are for planning only, never a structural design or tender bill of quantities',
+      'Never uploads your drawings to outside websites or services',
+    ],
+  },
+  {
+    id: 'idea-crucible',
+    name: 'Idea Crucible',
+    cat: 'ideas',
+    color: '#C98A55',
+    shape: 'cloud',
+    url: 'https://x.ai/bot/HC0KHm9BA5wSRows_32M8',
+    tagline: 'Find ideas you can sell. Then try hard to break them.',
+    summary:
+      "Finds near-term product and service opportunities you can sell or ship, then stress-tests the best ones with sharp questions so weak assumptions don't survive.",
+    what:
+      'Idea Crucible is part opportunity hunter, part devil\u2019s advocate. It looks for product and service opportunities you could sell or ship soon, then questions the strongest ones Socratically. It co-builds and pressure-tests in the same conversation.',
+    who: 'Founders and builders who want ideas they can actually sell, not just ideas that sound good.',
+    steps: [
+      'Start a chat and tell it what you can build, sell, or are curious about.',
+      'It hunts for near-term product and service opportunities.',
+      'It picks the strongest ones to work on with you.',
+      'It asks sharp, Socratic questions about each one.',
+      'Weak assumptions get named and dropped. Strong ones get built on, in the same chat.',
+    ],
+    get: [
+      'A set of near-term opportunities you could sell or ship',
+      'Hard questions on the best ones',
+      'A clear view of which assumptions did not survive',
+    ],
+    rules: ['Mixes building and challenging in one conversation, so you never get only cheerleading'],
+  },
+  {
+    id: 'product-idea-stress-test',
+    name: 'Product Idea Stress Test',
+    cat: 'ideas',
+    color: '#1084FE',
+    shape: 'squircle',
+    url: 'https://x.ai/bot/y9yXViK2NMqb5421gx-PY',
+    tagline: 'Find the assumption most likely to kill your idea.',
+    summary:
+      'Investigates a product or startup idea for founders. Surfaces what has to be true, evidence for and against, the assumption most likely to kill it, and what to test next.',
+    what:
+      'Give it a product or startup idea and it investigates it like a skeptical analyst. It lays out what has to be true for the idea to work, looks for evidence on both sides, and points to the one assumption most likely to sink it.',
+    who: 'Founders weighing a product or startup idea before they spend time and money on it.',
+    steps: [
+      'Describe your product or startup idea.',
+      'It works out what has to be true for the idea to work.',
+      'It looks for evidence for and against.',
+      'It names the assumption most likely to kill the idea.',
+      'It tells you what to test next.',
+    ],
+    get: [
+      'A list of what has to be true',
+      'Evidence for and against',
+      'The single riskiest assumption',
+      'A next test to run',
+    ],
+    rules: ['Built for honest investigation, not validation'],
+  },
+  {
+    id: 'sell-bot',
+    name: 'Sell Bot',
+    cat: 'growth',
+    color: '#FF6700',
+    shape: 'capsule',
+    url: 'https://x.ai/bot/Hy7a9gTh19LsEo7sUbc95',
+    tagline: 'Your whole customer journey, drafted in your voice.',
+    summary:
+      'Works your whole customer journey, from outreach and call prep to proposals, support, and expansion. It drafts everything in your voice and sends only what you approve.',
+    what:
+      'Sell Bot covers the full path from first contact to a growing account: outreach in your voice, booked calls with prep and follow-ups, proposals and contracts, then activation, support and billing answers, and expansion.',
+    who: 'Founders and small teams who sell and support customers themselves.',
+    steps: [
+      'Outreach: it drafts first messages in your voice.',
+      'Calls: it preps you for booked calls and drafts the follow-ups.',
+      'Deals: it drafts proposals and contracts.',
+      'After the sale: it helps with activation, support, and billing answers.',
+      'Expansion: it spots the next step with existing customers. Every message waits for your approval, one at a time.',
+    ],
+    get: [
+      'Outreach drafts in your voice',
+      'Call prep and follow-ups',
+      'Proposal and contract drafts',
+      'Support and billing answers',
+      'Expansion messages',
+    ],
+    rules: ['Drafts everything for your review', 'Sends only what you approve, one message at a time'],
+  },
+  {
+    id: 'x-growth',
+    name: 'X Growth',
+    cat: 'growth',
+    color: '#A7B0BC',
+    shape: 'squircle',
+    url: 'https://x.ai/bot/3EcuvW_We79xaKyFEpmG3',
+    tagline: 'Grow on X toward the creator payout bar, in your voice.',
+    summary:
+      "Grows your X following toward X's creator payout requirements. It researches trends, drafts original posts, replies and weekly articles in your voice, and reports progress, while you press Post yourself.",
+    what:
+      "X Growth works toward X's creator payout requirements. It researches what is trending, drafts original posts, replies, and weekly articles that sound like you, and reports how you are progressing.",
+    who: 'Creators and founders building an audience on X who want help with the daily writing.',
+    steps: [
+      'It researches trends in your space.',
+      'It drafts original posts in your voice.',
+      'It drafts replies to relevant conversations.',
+      'It drafts a weekly article.',
+      'It reports your progress. You press Post yourself.',
+    ],
+    get: ['Original post drafts', 'Reply drafts', 'Weekly article drafts', 'Progress reports'],
+    rules: ['You stay in control: you press Post yourself'],
+  },
+  {
+    id: 'talent-discovery',
+    name: 'Talent Discovery',
+    cat: 'hiring',
+    color: '#FFC400',
+    shape: 'dome',
+    url: 'https://x.ai/bot/JBRT0KSmItzDxCuBq1Buq',
+    tagline: 'New candidates who are not already in your pipeline.',
+    summary:
+      "Finds candidates for your open roles on the public web, checks them against your bar and against who's already in your pipeline, and drafts the first outreach for you to send.",
+    what:
+      'Talent Discovery searches the public web for people who fit your open roles. It checks each person against your criteria and against your existing pipeline (your ATS), so you only see new, relevant candidates, then drafts the first outreach.',
+    who: 'Hiring teams and founders with open roles who want fresh candidates without duplicates.',
+    steps: [
+      'Share your open roles and your bar for each.',
+      'It finds candidates on the public web.',
+      'It checks each one against your criteria.',
+      'It removes anyone already in your pipeline.',
+      'It drafts the first outreach for you to send.',
+    ],
+    get: ['Candidates matched to your bar', 'No duplicates of people already in your pipeline', 'First outreach drafts ready to send'],
+    rules: ['You send the outreach yourself'],
+  },
+  {
+    id: 'talent-reach',
+    name: 'Talent Reach',
+    cat: 'hiring',
+    color: '#FF9800',
+    shape: 'cloud',
+    url: 'https://x.ai/bot/9YIeLNtsYBI1bO74PM2EY',
+    tagline: 'From a job description to approved outreach emails.',
+    summary:
+      'Turns a job description into a shortlist of matching candidates with publicly listed emails, plus short personal outreach emails you approve before anything is sent.',
+    what:
+      'Paste or upload a job description with a location and package. Talent Reach pulls out the title, must-have skills, seniority, and location, searches the public web for people who fit, and writes one short personal email per candidate.',
+    who: 'Founders and small teams hiring without a recruiter.',
+    steps: [
+      'Share a job description, preferred location, and package.',
+      'It searches public sources: LinkedIn profiles found through search engines, GitHub, personal sites, portfolios, speaker pages, and community posts.',
+      'It aims for 15 to 30 strong matches and keeps only people whose email is publicly listed, recording where it found each one.',
+      'It writes one personal email per candidate, under 120 words, using something real from their profile.',
+      'You approve the batch, drop people, or edit the template. Nothing is sent without your approval.',
+    ],
+    get: [
+      'A shortlist table in chat, also as a CSV',
+      'Name, role, company, location, reasons they fit, email, and source link for each',
+      'Short personal outreach emails ready to approve',
+    ],
+    rules: [
+      'Never sends an email without your approval',
+      'Never guesses email addresses or buys contact lists',
+      'Never scrapes behind a login or messages anyone on social media',
+    ],
+  },
+  {
+    id: 'buy-or-skip',
+    name: 'Buy or Skip',
+    cat: 'shopping',
+    color: '#FFA726',
+    shape: 'tablet',
+    url: 'https://x.ai/bot/dKULJ5f9nPf6_fVn5aGK4',
+    tagline: 'One verdict on any product: BUY, WAIT, or SKIP.',
+    summary:
+      'Buy or Skip tells you whether a product is worth buying right now. Paste a product link or name and it returns one verdict: BUY, WAIT, or SKIP.',
+    what:
+      'A blunt friend who hates wasting money. It opens the product page, reads the bad reviews first, checks the price history, finds alternatives, and gives you one clear verdict. It works for any store and any country and uses the currency on the page.',
+    who: 'Anyone about to buy something online who wants a straight answer.',
+    steps: [
+      'Paste a product link or name. Several links? It compares them and picks one.',
+      'It reads the current price, seller, and rating from the product page.',
+      'It reads the 1 to 3 star reviews first, then Reddit, forums, and long-term reviews for problems that show up after weeks of use.',
+      'It checks price history where one exists, for example camelcamelcamel or Keepa for Amazon.',
+      'It finds one or two cheaper or better alternatives and replies with a short verdict card.',
+    ],
+    get: [
+      'The verdict and a one-line reason',
+      'The current price and whether it is high, normal, or low',
+      'The top three real complaints, each with how often it shows up and a source link',
+      'Who should buy it anyway, and the best alternative with its price',
+      'For WAIT: what price or event to wait for, plus an optional weekly price check',
+    ],
+    rules: [
+      'Never buys, adds to a cart, signs in to a store, or enters payment details',
+      'Never invents a price, rating, review, or price history',
+      'No affiliate links, tracking codes, or sponsored picks',
+    ],
+  },
+];
