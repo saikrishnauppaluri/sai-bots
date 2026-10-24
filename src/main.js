@@ -103,7 +103,8 @@ function openBot(id, push = true) {
       .fromTo($$('.m-in', body), { y: 24, opacity: 0 }, { y: 0, opacity: 1, duration: 0.6, stagger: 0.05, ease: 'power3.out' }, 0.15)
       .fromTo($$('.steps li', body), { x: -16, opacity: 0 }, { x: 0, opacity: 1, duration: 0.5, stagger: 0.06, ease: 'power3.out' }, 0.35);
   }
-  panel.focus();
+  panel.focus({ preventScroll: true });
+  requestAnimationFrame(() => { panel.scrollTop = 0; });
 }
 function closeBot() {
   if (!modal.classList.contains('open')) return;
@@ -236,7 +237,8 @@ heroCanvas();
 
 /* ---------- motion ---------- */
 if (!reduce) {
-  lenis = new Lenis({ lerp: 0.09, smoothWheel: true });
+  // Lenis cancels wheel/touch while stopped; let the open modal scroll natively.
+  lenis = new Lenis({ lerp: 0.09, smoothWheel: true, prevent: (node) => node.id === 'modal' || node.classList?.contains('modal-panel') });
   lenis.on('scroll', ScrollTrigger.update);
   gsap.ticker.add((time) => lenis.raf(time * 1000));
   gsap.ticker.lagSmoothing(0);

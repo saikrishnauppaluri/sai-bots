@@ -136,7 +136,7 @@ section{position:relative}
 .modal{position:fixed;inset:0;z-index:80;display:grid;place-items:center;padding:clamp(10px,3vw,40px);visibility:hidden}
 .modal.open{visibility:visible}
 .modal-backdrop{position:absolute;inset:0;background:rgba(4,4,8,.72);backdrop-filter:blur(10px);opacity:0}
-.modal-panel{--c:#fff;position:relative;width:min(920px,100%);max-height:calc(100svh - 24px);overflow:auto;overscroll-behavior:contain;border-radius:28px;background:#0d0d14;border:1px solid var(--line);padding:clamp(24px,4vw,48px);outline:none}
+.modal-panel{--c:#fff;position:relative;width:min(920px,100%);max-height:calc(100vh - 24px);max-height:calc(100dvh - 24px);overflow-y:auto;overflow-x:hidden;overscroll-behavior:contain;-webkit-overflow-scrolling:touch;touch-action:pan-y;border-radius:28px;background:#0d0d14;border:1px solid var(--line);padding:clamp(24px,4vw,48px);outline:none}
 .modal-panel::before{content:"";position:absolute;inset:0 0 auto 0;height:220px;background:radial-gradient(600px 220px at 20% 0%,color-mix(in srgb,var(--c) 28%,transparent),transparent 70%);pointer-events:none}
 .modal-close{position:sticky;float:right;top:0;width:42px;height:42px;border-radius:50%;border:1px solid var(--line);background:rgba(0,0,0,.4);color:var(--ink);font-size:24px;line-height:1;cursor:pointer;z-index:2}
 .m-head{position:relative;display:flex;gap:20px;align-items:center;margin-bottom:22px}
