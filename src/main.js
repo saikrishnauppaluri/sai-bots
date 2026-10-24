@@ -50,16 +50,6 @@ grid.innerHTML = BOTS.map((b) => `
     </div>
   </article>`).join('');
 
-/* ---------- quick links: all bots ---------- */
-$('#quick-list').innerHTML = BOTS.map((b) => `
-  <li style="--c:${b.color}">
-    <a class="ql" href="${b.url}" target="_blank" rel="noopener">
-      <i aria-hidden="true"></i>
-      <span class="ql-text"><b>${esc(b.name)}</b><span>${esc(b.tagline)}</span></span>
-      <span class="ql-go">Open bot <span aria-hidden="true">&#8599;</span></span>
-    </a>
-  </li>`).join('');
-
 /* ---------- modal ---------- */
 const modal = $('#modal');
 const panel = $('.modal-panel', modal);
@@ -276,8 +266,8 @@ if (!reduce) {
   gsap.from('.filter', { y: 20, opacity: 0, duration: 0.6, stagger: 0.05, ease: 'power3.out', scrollTrigger: { trigger: '#filters', start: 'top 90%' } });
 
   // cards: staggered entrance per row
-  // cards and quick links: motion only, never hidden. Links stay visible even if ScrollTrigger never fires.
-  ScrollTrigger.batch('.card, .quick li', {
+  // cards: motion only, never hidden. Links stay visible even if ScrollTrigger never fires.
+  ScrollTrigger.batch('.card', {
     start: 'top 95%', once: true,
     onEnter: (els) => gsap.from(els, { y: 40, duration: 0.9, stagger: 0.06, ease: 'expo.out', clearProps: 'transform' }),
   });
