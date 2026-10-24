@@ -40,12 +40,25 @@ filters.innerHTML = CATEGORIES.map((c) => {
 
 const grid = $('#grid');
 grid.innerHTML = BOTS.map((b) => `
-  <article class="card" tabindex="0" role="button" aria-label="Open details for ${esc(b.name)}" data-id="${b.id}" data-cat="${b.cat}" style="--c:${b.color}">
+  <article class="card" data-id="${b.id}" data-cat="${b.cat}" style="--c:${b.color}">
     <div class="card-top">${glyph(b.shape, b.color, b.id)}<span class="tag">${catLabel(b.cat)}</span></div>
     <h3>${esc(b.name)}</h3>
     <p>${esc(b.tagline)}</p>
-    <div class="card-foot"><span class="more">How it works</span><span class="arrow" aria-hidden="true">&rarr;</span></div>
+    <div class="card-foot">
+      <a class="card-open" href="${b.url}" target="_blank" rel="noopener" aria-label="Open the ${esc(b.name)} bot template (opens in a new tab)">Open bot <span aria-hidden="true">&#8599;</span></a>
+      <button type="button" class="card-more" aria-label="How ${esc(b.name)} works">How it works <span class="arrow" aria-hidden="true">&rarr;</span></button>
+    </div>
   </article>`).join('');
+
+/* ---------- quick links: all bots ---------- */
+$('#quick-list').innerHTML = BOTS.map((b) => `
+  <li style="--c:${b.color}">
+    <a class="ql" href="${b.url}" target="_blank" rel="noopener">
+      <i aria-hidden="true"></i>
+      <span class="ql-text"><b>${esc(b.name)}</b><span>${esc(b.tagline)}</span></span>
+      <span class="ql-go">Open bot <span aria-hidden="true">&#8599;</span></span>
+    </a>
+  </li>`).join('');
 
 /* ---------- modal ---------- */
 const modal = $('#modal');
@@ -116,8 +129,10 @@ document.addEventListener('keydown', (e) => {
     else if (!e.shiftKey && document.activeElement === f[f.length - 1]) { e.preventDefault(); f[0].focus(); }
   }
 });
-grid.addEventListener('click', (e) => { const c = e.target.closest('.card'); if (c) openBot(c.dataset.id); });
-grid.addEventListener('keydown', (e) => { const c = e.target.closest('.card'); if (c && (e.key === 'Enter' || e.key === ' ')) { e.preventDefault(); openBot(c.dataset.id); } });
+grid.addEventListener('click', (e) => {
+  if (e.target.closest('a')) return; // "Open bot" goes straight to the template
+  const c = e.target.closest('.card'); if (c) openBot(c.dataset.id);
+});
 
 /* ---------- filters ---------- */
 filters.addEventListener('click', (e) => {
@@ -253,20 +268,20 @@ if (!reduce) {
     const words = splitWords(el);
     gsap.from(words, { yPercent: 105, duration: 1, stagger: 0.06, ease: 'expo.out', scrollTrigger: { trigger: el, start: 'top 85%' } });
   });
-  $$('.section-sub, .about-sub, .plugin-copy > p, .facts li, .about-links .pill, .plugin .hero-ctas').forEach((el) => {
+  $$('.section-sub, .about-sub, .plugin-copy > p, .facts li, .about-links .pill').forEach((el) => {
     gsap.from(el, { y: 26, opacity: 0, duration: 0.9, ease: 'power3.out', scrollTrigger: { trigger: el, start: 'top 90%' } });
   });
   gsap.from('.filter', { y: 20, opacity: 0, duration: 0.6, stagger: 0.05, ease: 'power3.out', scrollTrigger: { trigger: '#filters', start: 'top 90%' } });
 
   // cards: staggered entrance per row
-  gsap.set('.card', { opacity: 0 });
-  ScrollTrigger.batch('.card', {
-    start: 'top 92%', once: true,
-    onEnter: (els) => gsap.fromTo(els, { y: 70, opacity: 0, rotateX: -12, scale: 0.95 }, { y: 0, opacity: 1, rotateX: 0, scale: 1, duration: 1, stagger: 0.09, ease: 'expo.out', clearProps: 'transform' }),
+  // cards and quick links: motion only, never hidden. Links stay visible even if ScrollTrigger never fires.
+  ScrollTrigger.batch('.card, .quick li', {
+    start: 'top 95%', once: true,
+    onEnter: (els) => gsap.from(els, { y: 40, duration: 0.9, stagger: 0.06, ease: 'expo.out', clearProps: 'transform' }),
   });
 
   // principles
-  ScrollTrigger.batch('.principle', { start: 'top 90%', once: true, onEnter: (els) => gsap.from(els, { y: 50, opacity: 0, duration: 0.9, stagger: 0.1, ease: 'power3.out' }) });
+  ScrollTrigger.batch('.principle', { start: 'top 90%', once: true, onEnter: (els) => gsap.from(els, { y: 50, duration: 0.9, stagger: 0.1, ease: 'power3.out', clearProps: 'transform' }) });
 
   // plugin image parallax + clip reveal
   gsap.fromTo('.plugin-frame', { clipPath: 'inset(18% 18% 18% 18% round 28px)' }, { clipPath: 'inset(0% 0% 0% 0% round 28px)', ease: 'none', scrollTrigger: { trigger: '.plugin', start: 'top 85%', end: 'center 55%', scrub: true } });
@@ -303,6 +318,15 @@ if (!reduce) {
     document.addEventListener('pointerleave', () => cur.classList.remove('on'));
   }
 }
+
+/* failsafe: if any reveal is still hidden after load (ScrollTrigger skipped, tab in background, etc.), show it */
+function unhide() {
+  $$('.reveal-up, .section-sub, .about-sub, .plugin-copy > p, .facts li, .about-links .pill, .filter, .card, .quick li, .principle, .nav, .split-words .w>span, .hero-title .ch').forEach((el) => {
+    if (parseFloat(getComputedStyle(el).opacity) < 0.99 && !el.closest('.hero-inner[style*="opacity"]')) gsap.set(el, { opacity: 1, y: 0, yPercent: 0, rotate: 0 });
+  });
+}
+window.addEventListener('load', () => setTimeout(unhide, 2500));
+setTimeout(unhide, 5000);
 
 /* deep link: #bot-<id> */
 const deep = location.hash.match(/^#bot-(.+)$/);

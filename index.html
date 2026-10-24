@@ -35,7 +35,8 @@
 <header class="nav">
   <a class="brand" href="#top" aria-label="Home"><span class="brand-dot"></span>sai/bots</a>
   <nav>
-    <a href="#bots">Bots</a>
+    <a href="#all-bots">All bots</a>
+    <a href="#bots">Details</a>
     <a href="#plugin">Plugin</a>
     <a href="#about">About</a>
     <a class="nav-cta magnetic" href="mailto:krishna.ceo@visnetai.co">Contact</a>
@@ -53,11 +54,20 @@
       </h1>
       <p class="hero-sub reveal-up">Eight ready to use bots built by Sai Krishna Uppaluri, founder of <a href="https://visnetai.co" target="_blank" rel="noopener">ViSNET AI</a>. Open one, copy it to your Grok Bot, and it starts working.</p>
       <div class="hero-ctas reveal-up">
-        <a href="#bots" class="btn btn-primary magnetic"><span>Browse the bots</span></a>
+        <a href="#all-bots" class="btn btn-primary magnetic"><span>Open the bots</span></a>
         <a href="#plugin" class="btn btn-ghost magnetic"><span>Plan to 3D plugin</span></a>
       </div>
     </div>
     <div class="scroll-hint" aria-hidden="true"><span></span></div>
+  </section>
+
+  <section class="quick" id="all-bots" aria-labelledby="all-bots-title">
+    <div class="section-head">
+      <p class="eyebrow">Quick links</p>
+      <h2 class="quick-title" id="all-bots-title">All bots</h2>
+      <p class="section-sub">Tap any bot to open its Grok Bot template in a new tab.</p>
+    </div>
+    <ul class="quick-list" id="quick-list"></ul>
   </section>
 
   <section class="marquee" aria-hidden="true">
@@ -68,7 +78,7 @@
     <div class="section-head">
       <p class="eyebrow">The collection</p>
       <h2 class="section-title split-words">Eight bots. Pick a job.</h2>
-      <p class="section-sub">Every bot is a public template. Tap a card for what it does, who it is for, how it works, and what you get.</p>
+      <p class="section-sub">Every bot is a public template. Use Open bot to go straight to a template, or How it works for what it does, who it is for, and what you get.</p>
     </div>
     <div class="filters" role="tablist" aria-label="Filter bots by category" id="filters"></div>
     <div class="grid" id="grid"></div>
@@ -135,7 +145,19 @@
   </div>
 </div>
 
-<noscript><style>.reveal-up,.card,.principle,.split{opacity:1!important;transform:none!important}</style></noscript>
+<noscript>
+<style>.reveal-up,.card,.principle,.split,.quick li{opacity:1!important;transform:none!important}</style>
+<section class="quick" style="padding:40px 20px"><h2>All bots</h2><ul>
+<li><a href="https://x.ai/bot/b8uZ_wfko_YxI-j8YPKAe">Plan to 3D</a></li>
+<li><a href="https://x.ai/bot/HC0KHm9BA5wSRows_32M8">Idea Crucible</a></li>
+<li><a href="https://x.ai/bot/y9yXViK2NMqb5421gx-PY">Product Idea Stress Test</a></li>
+<li><a href="https://x.ai/bot/Hy7a9gTh19LsEo7sUbc95">Sell Bot</a></li>
+<li><a href="https://x.ai/bot/3EcuvW_We79xaKyFEpmG3">X Growth</a></li>
+<li><a href="https://x.ai/bot/JBRT0KSmItzDxCuBq1Buq">Talent Discovery</a></li>
+<li><a href="https://x.ai/bot/9YIeLNtsYBI1bO74PM2EY">Talent Reach</a></li>
+<li><a href="https://x.ai/bot/dKULJ5f9nPf6_fVn5aGK4">Buy or Skip</a></li>
+</ul></section>
+</noscript>
 <script type="module" src="/src/main.js"></script>
 </body>
 </html>
