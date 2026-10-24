@@ -165,3 +165,4 @@ section{position:relative}
   *,*::before,*::after{animation:none!important;transition:none!important}
   .cursor{display:none}
 }
+.footer a{color:var(--ink);text-decoration:underline;text-underline-offset:3px}

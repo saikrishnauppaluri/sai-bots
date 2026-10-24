@@ -126,29 +126,6 @@ export const BOTS = [
     rules: ['Drafts everything for your review', 'Sends only what you approve, one message at a time'],
   },
   {
-    id: 'x-growth',
-    name: 'Content Poster',
-    cat: 'growth',
-    color: '#A7B0BC',
-    shape: 'squircle',
-    url: 'https://x.ai/bot/3EcuvW_We79xaKyFEpmG3',
-    tagline: 'Daily X posts and replies, written in your voice.',
-    summary:
-      "Keeps your X account active and growing. It researches trends, drafts original posts, replies and weekly articles in your voice, and reports progress, while you press Post yourself.",
-    what:
-      "Content Poster handles the daily writing for your X account. It researches what is trending, drafts original posts, replies, and weekly articles that sound like you, and reports how your audience is growing.",
-    who: 'Creators and founders building an audience on X who want help with the daily writing.',
-    steps: [
-      'It researches trends in your space.',
-      'It drafts original posts in your voice.',
-      'It drafts replies to relevant conversations.',
-      'It drafts a weekly article.',
-      'It reports your progress. You press Post yourself.',
-    ],
-    get: ['Original post drafts', 'Reply drafts', 'Weekly article drafts', 'Progress reports'],
-    rules: ['You stay in control: you press Post yourself'],
-  },
-  {
     id: 'talent-discovery',
     name: 'Talent Discovery',
     cat: 'hiring',

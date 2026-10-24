@@ -268,7 +268,7 @@ if (!reduce) {
     const words = splitWords(el);
     gsap.from(words, { yPercent: 105, duration: 1, stagger: 0.06, ease: 'expo.out', scrollTrigger: { trigger: el, start: 'top 85%' } });
   });
-  $$('.section-sub, .about-sub, .plugin-copy > p, .facts li, .about-links .pill').forEach((el) => {
+  $$('.section-sub').forEach((el) => {
     gsap.from(el, { y: 26, opacity: 0, duration: 0.9, ease: 'power3.out', scrollTrigger: { trigger: el, start: 'top 90%' } });
   });
   gsap.from('.filter', { y: 20, opacity: 0, duration: 0.6, stagger: 0.05, ease: 'power3.out', scrollTrigger: { trigger: '#filters', start: 'top 90%' } });
@@ -283,9 +283,6 @@ if (!reduce) {
   // principles
   ScrollTrigger.batch('.principle', { start: 'top 90%', once: true, onEnter: (els) => gsap.from(els, { y: 50, duration: 0.9, stagger: 0.1, ease: 'power3.out', clearProps: 'transform' }) });
 
-  // plugin image parallax + clip reveal
-  gsap.fromTo('.plugin-frame', { clipPath: 'inset(18% 18% 18% 18% round 28px)' }, { clipPath: 'inset(0% 0% 0% 0% round 28px)', ease: 'none', scrollTrigger: { trigger: '.plugin', start: 'top 85%', end: 'center 55%', scrub: true } });
-  gsap.fromTo('.plugin-frame img', { scale: 1.3 }, { scale: 1, ease: 'none', scrollTrigger: { trigger: '.plugin', start: 'top bottom', end: 'bottom top', scrub: true } });
 
   // card hover glow + tilt
   if (fine) {
@@ -321,7 +318,7 @@ if (!reduce) {
 
 /* failsafe: if any reveal is still hidden after load (ScrollTrigger skipped, tab in background, etc.), show it */
 function unhide() {
-  $$('.reveal-up, .section-sub, .about-sub, .plugin-copy > p, .facts li, .about-links .pill, .filter, .card, .quick li, .principle, .nav, .split-words .w>span, .hero-title .ch').forEach((el) => {
+  $$('.reveal-up, .section-sub, .filter, .card, .quick li, .principle, .nav, .split-words .w>span, .hero-title .ch').forEach((el) => {
     if (parseFloat(getComputedStyle(el).opacity) < 0.99 && !el.closest('.hero-inner[style*="opacity"]')) gsap.set(el, { opacity: 1, y: 0, yPercent: 0, rotate: 0 });
   });
 }
