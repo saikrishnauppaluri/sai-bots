@@ -2,7 +2,10 @@ import './style.css';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import Lenis from 'lenis';
+import { inject } from '@vercel/analytics';
 import { BOTS, CATEGORIES } from './data.js';
+
+inject();
 
 gsap.registerPlugin(ScrollTrigger);
 const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
