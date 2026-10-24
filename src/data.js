@@ -127,16 +127,16 @@ export const BOTS = [
   },
   {
     id: 'x-growth',
-    name: 'X Growth',
+    name: 'Content Poster',
     cat: 'growth',
     color: '#A7B0BC',
     shape: 'squircle',
     url: 'https://x.ai/bot/3EcuvW_We79xaKyFEpmG3',
-    tagline: 'Grow on X toward the creator payout bar, in your voice.',
+    tagline: 'Daily X posts and replies, written in your voice.',
     summary:
-      "Grows your X following toward X's creator payout requirements. It researches trends, drafts original posts, replies and weekly articles in your voice, and reports progress, while you press Post yourself.",
+      "Keeps your X account active and growing. It researches trends, drafts original posts, replies and weekly articles in your voice, and reports progress, while you press Post yourself.",
     what:
-      "X Growth works toward X's creator payout requirements. It researches what is trending, drafts original posts, replies, and weekly articles that sound like you, and reports how you are progressing.",
+      "Content Poster handles the daily writing for your X account. It researches what is trending, drafts original posts, replies, and weekly articles that sound like you, and reports how your audience is growing.",
     who: 'Creators and founders building an audience on X who want help with the daily writing.',
     steps: [
       'It researches trends in your space.',
